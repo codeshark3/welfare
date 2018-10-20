@@ -5,7 +5,7 @@
             parent::__construct();
             
             // Load url helper
-            $this->load->helper('url');
+            
             }
 
         public function view($page ='home'){

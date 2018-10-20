@@ -23,7 +23,7 @@ link rel="stylesheet" type="text/css" href="</?php echo base_url(); ?>css/dashbo
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
--->
+
             </ul>
             <ul class="navbar-nav">
            
@@ -35,14 +35,14 @@ link rel="stylesheet" type="text/css" href="</?php echo base_url(); ?>css/dashbo
                         <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="#">Log Out</a>
                     </div>
-                </li>
+                </li>-->
                 <!--
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/login') }}">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/register') }}">Register</a>
-                </li>-->
+                </li>
             </ul>
         </div>
     </nav>
@@ -61,7 +61,8 @@ link rel="stylesheet" type="text/css" href="</?php echo base_url(); ?>css/dashbo
     <!-- Bootstrap core CSS -->
   <!--  <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/dashboard.css">    
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/dashboard.css">    
     <!-- Custom styles for this template -->
     
   </head>
@@ -86,6 +87,7 @@ link rel="stylesheet" type="text/css" href="</?php echo base_url(); ?>css/dashbo
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="<?php echo base_url(); ?>/signout">Sign out</a>
         </li>
+       
         
       </ul>
     </nav>

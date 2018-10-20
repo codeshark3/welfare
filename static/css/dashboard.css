@@ -39,11 +39,12 @@ body {
 }
 
 .sidebar .nav-link {
+  font-size:22px;
   font-weight: 500;
   color: #333;
 }
 
-.sidebar .nav-link .feather {
+.sidebar .nav-link .feather .list-group-item .list-group  {
   margin-right: 4px;
   color: #999;
 }
@@ -86,15 +87,22 @@ body {
   padding: .75rem 1rem;
   border-width: 0;
   border-radius: 0;
+ 
 }
 
 .form-control-dark {
   color: #fff;
   background-color: rgba(255, 255, 255, .1);
   border-color: rgba(255, 255, 255, .1);
+  /*font-size: 30px;*/
 }
+
+/*label {
+  font-size: 22px   !important; 
+}*/
 
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
