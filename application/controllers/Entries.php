@@ -25,20 +25,22 @@
             $this->load->view('entries/view_entry',$data);
             $this->load->view('templates/footer');
         }
-        /*
+      
         public function view_detail($folder_no = NULL){
             $data['entry'] = $this->entry_model->get_entry($folder_no);
+             print_r($data['entry']);
 
-            if(empty($folder_no['entry'])){
+            if(empty($data['entry'])){
                 show_404();
             }
 
-            $data['case_no'] = $data['first_name']['last_name'];
+            #$data['case_no'] = $data['first_name']['last_name'];
+           
 
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');
             $this->load->view('entries/details',$data);
             $this->load->view('templates/footer');
         }
-*/
+
     }   
