@@ -1,4 +1,4 @@
-
+<!--
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -18,13 +18,27 @@
     });
   }, false);
 })();
-</script>        
+</script>  -->      
+<script type="text/javascript">
+  (function(){
+    $('#datetimepicker-demo').datetimepicker({
+      format: 'L', // or 'l' (lowercase L) for non-zero-padded
+      date: moment()
+
+    });
+
+  });
+</script>
+<script src="<?php echo base_url(); ?>static/js/jquery-3.3.1.slim.min.js"></script>
+<script src="<?php echo base_url(); ?>static/js/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<script src="<?php echo base_url(); ?>static/js/moment.min.js"></script>
+<script src="<?php echo base_url(); ?>static/js/moment-with-locales.min.js"></script>
+<script src="<?php echo base_url(); ?>static/js/tempusdominus-bootstrap-4.min.js"></script>
 
 
 <script src="<?php echo base_url(); ?>static/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>static/js/popper.min.js"></script>
 
-<script src="<?php echo base_url(); ?>static/js/jquery-3.3.1.slim.min.js"></script>
 
 <!--
 

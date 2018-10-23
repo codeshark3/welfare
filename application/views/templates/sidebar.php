@@ -11,14 +11,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href=" New Entry " style="font-size:22px">
+                <a class="nav-link" href="<?php echo base_url(); ?>entries" style="font-size:22px">
                   <span data-feather="file"></span>
                  Add New Entry
                 </a>
               </li>
              
               <li class="nav-item">
-                <a class="nav-link" href="#" style="font-size:22px">
+                <a class="nav-link" href="<?php echo base_url(); ?>view_entry" style="font-size:22px">
                   <span data-feather="list"></span>
                   View Entries
                 </a>
