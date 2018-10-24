@@ -15,44 +15,176 @@
             </div>
 --> </div>
 
-<div class="entry-body">
-<?php foreach($entries as $entry) : ?>
 
-<div class="responsive mx-auto">
-<table class="table table-striped table-sm">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Case Number</th>
-      <th scope="col">Folder Number</th>
-      <th scope="col">Serial Number</th>
-      <th scope="col">Amount Owed</th>
-      <th scope="col">Approved</th>
-      <th scope="col">Approved</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"><?php echo $entry['id']; ?></th>
-      <td><?php echo $entry['last_name']; ?></td>
-      <td><?php echo $entry['first_name']; ?></td>  
-      <td><?php echo $entry['case_no']; ?></td>
-      <td><?php echo $entry['folder_no']; ?></td>
-      <td><?php echo $entry['serial_no']; ?></td>
-      <td><?php echo $entry['total']; ?></td>
-      <td><?php echo $entry['serial_no']; ?></td>
-      <td><a class="btn  btn-sm btn-primary" href="<?php echo site_url('/entries/'.$entry['folder_no']); ?>">Details</a></td>
-    </tr>
-  </tbody>
-</table>
-
+<div class="col-6 mx-auto">
+    <form>
+     <div class="row">
+      <div class="form-group col-md-6">
+          <label  for="CaseNo.">Case Number</label>
+          <input type="text" class="form-control" id="CaseNo."  value="<?php echo $entry['case_no']; ?>">
+      </div>
+      <div class="form-group col-md-6">
+          <label for="FolderNo.">Folder Number</label>
+          <input type="text" class="form-control" id="FolderNo."  value="<?php echo $entry['folder_no']; ?>">
+      </div>
 </div>
 
+<div class="row">
+      <div class="form-group  col-md-4" >
+          <label for="SerialNo.">Serial Number</label>
+          <input type="text" class="form-control" id="Serial No." value="<?php echo $entry['serial_no']; ?>"">
+      </div>
+      <div class="form-group col-md-4">
+          <label for="">Department</label>
+          <input type="text" class="form-control" id="" value="<?php echo $entry['department']; ?>">
+      </div>
+      <div class="form-group col-md-4">
+          <label for="">Ward</label>
+          <input type="text" class="form-control" id="" value="<?php echo $entry['ward']; ?>">
+      </div>
+</div>
+        <div class="row">
+        <div class="form-group col-md-6">
+          <label for="">First Name</label>
+          <input type="text" class="form-control" id="" value="<?php echo $entry['first_name']; ?>">
+      </div>
+      <div class="form-group col-md-6">
+          <label for="">Last Name</label>
+          <input type="text" class="form-control" id="" value="<?php echo $entry['last_name']; ?>">
+      </div>
+      </div>
+      <div class="row">
+      <div class="form-group col-md-4">
+          <label for="">Date</label>
+          <div class="input-group date" id="date" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#date"/>
+            <div class="input-group-append" data-target="#date" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+          <label for="">Date of Admission</label>
+          <div class="input-group date" id="admission_date" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#admission_date"/>
+            <div class="input-group-append" data-target="#admission_date" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4 ">
+          <label for="">Date of Discharge</label>
+          <div class="input-group date" id="discharge_date" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#discharge_date"/>
+            <div class="input-group-append" data-target="#discharge_date" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+      </div>
+</div>
+      
+    <div class="row">
+      <div class="form-group col-md 6">
+          <label for="">Day Of Payment</label>
+          <div class="input-group date" id="payment_date" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#payment_date"/>
+            <div class="input-group-append" data-target="#payment_date" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+</div>
+      </div>
+      <div class="form-group col-md-6">
+          <label for="">Amount Paid</label>
+          <div class="input-group-prepend">
+          
+            <span class="input-group-text">GHS</span>
+            <input type="text" class="form-control" id="" placeholder="">
+            </div>
+        </div>  
+         
+    </div>
+    <div class="row">
+    <div class="form-group col-md-4">
+          <label for="">Non Drug Bill</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+          <label for="">Drug Bill</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+      <div class="form-group col-md-4">
+          <label for=""> Total</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+</div>
 
-<?php endforeach; ?>
-
-
+      <div class="form-group">
+          <label for="">Incurred by</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+      <div class="row">
+      <div class="form-group col-md-4">
+          <label for="">Balance</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div><div class="form-group col-md-4">
+          <label for="">Due date</label>
+          <div class="input-group date" id="due_date" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#due_date"/>
+            <div class="input-group-append" data-target="#due_date" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div></div>
+      </div>
+      <div class="form-group col-md-4">
+          <label for="">Effective from</label>
+          <div class="input-group date" id="effective_date" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#effective_date"/>
+            <div class="input-group-append" data-target="#effective_date" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div></div>
+</div>
+      </div>
+      <div class="row">
+      <div class="form-group col-md-6">
+          <label for="">Name Of Declarant</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+      <div class="form-group col-md-6">
+          <label for="">Occupation</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+</div>
+      <div class="form-group">
+          <label for="">Declarant Address</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+      <div class="form-group ">
+        <div class="input-group date" id="datetimepicker-demo" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker-demo"/>
+            <div class="input-group-append" data-target="#datetimepicker-demo" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+        </div>
+      <hr/>
+      <div class="row">
+      <div class="form-group col-md-6">
+      <label for="">Name Of Guarantor</label>
+          <input type="text" class="form-control" id="" placeholder="">
+</div>
+      
+      <div class="form-group col-md-6">
+          <label for="">Occupation</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+</div>
+      <div class="form-group">
+          <label for="">Guarantor Address</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
+      
+      <div class="form-group">
+          <label for="">Date</label>
+          <input type="text" class="form-control" id="" placeholder="">
+      </div>
 
 </div>

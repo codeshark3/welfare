@@ -3,7 +3,7 @@
             <h1 class="h2">Entries</h1>
  </div>
 
-<?php foreach($entries as $entry) : ?>
+
 
 <div class="responsive mx-auto">
 <table class="table table-striped table-sm">
@@ -21,6 +21,7 @@
     </tr>
   </thead>
   <tbody>
+  <?php foreach($entries as $entry) : ?>
     <tr>
       <th scope="row"><?php echo $entry['id']; ?></th>
       <td><?php echo $entry['last_name']; ?></td>
@@ -32,11 +33,12 @@
       <td><?php echo $entry['serial_no']; ?></td>
       <td><a class="btn  btn-sm btn-primary" href="<?php echo site_url('/entries/'.$entry['folder_no']); ?>">Details</a></td>
     </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>
 
 </div>
 
 
-<?php endforeach; ?>
+
 

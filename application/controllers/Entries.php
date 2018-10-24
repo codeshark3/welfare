@@ -28,7 +28,7 @@
       
         public function view_detail($folder_no = NULL){
             $data['entry'] = $this->entry_model->get_entry($folder_no);
-             print_r($data['entry']);
+          
 
             if(empty($data['entry'])){
                 show_404();
