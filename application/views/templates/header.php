@@ -64,6 +64,8 @@ link rel="stylesheet" type="text/css" href="</?php echo base_url(); ?>css/dashbo
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/dashboard.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/tempusdominus-bootstrap-4.min.css"> 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/font-awesome.min.css">       
     <!-- Custom styles for this template -->
     
