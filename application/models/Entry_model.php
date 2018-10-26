@@ -7,6 +7,7 @@
 
         public function get_entry($folder_no = FALSE){    
             if($folder_no === FALSE){
+                //$this->db->order_by('id', 'DESC');
                 $query = $this->db->get('entries');
                 return $query->result_array();
             }

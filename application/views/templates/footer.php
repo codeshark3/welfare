@@ -132,7 +132,10 @@
 <script src="<?php echo base_url(); ?>static/js/moment.min.js"></script>
 <script src="<?php echo base_url(); ?>static/js/moment-with-locales.min.js"></script>
 <script src="<?php echo base_url(); ?>static/js/tempusdominus-bootstrap-4.min.js"></script>
-
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
 
 <script src="<?php echo base_url(); ?>static/js/bootstrap.min.js"></script>
 
