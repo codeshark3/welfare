@@ -16,14 +16,23 @@
         }
 
         public function view_entry(){
-            $data['entries'] = $this->entry_model->get_entry();
-            $this->load->view('templates/header');
+            //check login status
+            if(!$this->session->userdata('logged_in')){
+                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
+                redirect('users/login');
+            }
+            //$data['entries'] = $this->entry_model->get_entry();
+           $this->load->view('templates/header');
             $this->load->view('templates/sidebar');
-            $this->load->view('entries/view_entry',$data);
-            $this->load->view('templates/footer');
+        $this->load->view('entries/view_entry'/*,$data*/);
+          $this->load->view('templates/footer');
         }
       
         public function view_detail($folder_no = NULL){
+            if(!$this->session->userdata('logged_in')){
+                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
+                redirect('users/login');
+            }
             $data['entry'] = $this->entry_model->get_entry($folder_no);
           
 
@@ -41,8 +50,12 @@
         }
 
         public function create(){
-
+            if(!$this->session->userdata('logged_in')){
+                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
+                redirect('users/login');
+            }
             //form validation rules
+       
             $this->form_validation->set_rules('case_no', 'Case Number', 'required');
             $this->form_validation->set_rules('folder_no','Folder Number','required');
             $this->form_validation->set_rules('serial_no','Serial Number','required');
@@ -69,6 +82,11 @@
             $this->form_validation->set_rules('guarantor_name','Guarantor Name','required'); 
              $this->form_validation->set_rules('guarantor_occupation','Guarantor Occupation','required');
             $this->form_validation->set_rules('guarantor_address','Guarantor Address','required');
+            $this->form_validation->set_rules('investigator_name','Investigator','required');
+            $this->form_validation->set_rules('recommender_name','Recommender','required');
+            $this->form_validation->set_rules('recommender_position','Recommender Position','required');
+            $this->form_validation->set_rules('recommendation','Recommendation','required');
+            $this->form_validation->set_rules('approval','Approval','required');
             //$this->form_validation->set_rules('guarantor_date','guarantor_date','required');
             
             if($this->form_validation->run() === FALSE){
@@ -83,4 +101,49 @@
             
         }
 
+        public function edit($folder_no ){
+            if(!$this->session->userdata('logged_in')){
+                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
+                redirect('users/login');
+            }
+            $data['entry'] = $this->entry_model->get_entry($folder_no);
+          
+
+            if(empty($data['entry'])){
+                show_404();
+            }
+
+            #$data['case_no'] = $data['first_name']['last_name'];
+           
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/sidebar');
+            $this->load->view('entries/edit_view',$data);
+            $this->load->view('templates/footer');
+        }
+
+		public function update(){
+			// Check login
+			if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
+			$this->entry_model->update_entry();
+			// Set message
+			$this->session->set_flashdata('entry_updated', 'Your entry has been updated');
+			redirect('entries');
+        }
+        
+        public function dashboard(){
+            //check login status
+            if(!$this->session->userdata('logged_in')){
+                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
+                redirect('users/login');
+            }
+            $data['entries'] = $this->entry_model->get_dashboard();
+           // $this->load->view('templates/header');
+            //$this->load->view('templates/sidebar');
+            $this->load->view('entries/exec_dashboard',$data);
+            $this->load->view('templates/footer');
+        }
+    
     }   

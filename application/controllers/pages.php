@@ -13,7 +13,7 @@
             {
                   show_404();  
             }
-            $data['title'] = ucfirst($page);
+            //$data['title'] = ucfirst($page);
 
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');

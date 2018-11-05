@@ -19,125 +19,22 @@
   }, false);
 })();
 </script>  -->      
-<script type="text/javascript">
-  (function(){
-    $('#date').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
+</div>
 
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#datetimepicker-demo').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#admission_date').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#discharge_date').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#datetimepicker-demo').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#payment_date').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#due_date').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#effective_from').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#declarant_date').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-<script type="text/javascript">
-  (function(){
-    $('#guarantor_date').datetimepicker({
-      format: 'l', // or 'l' (lowercase L) for non-zero-padded
-     
-
-    });
-
-  });
-</script>
-
-
-
- <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <!--<//script src="</?php echo base_url(); ?>static/js/jquery-3.3.1.slim.min.js"><//script>-->
-<script src="<?php echo base_url(); ?>static/js/popper.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--
+<script src="</?php echo base_url(); ?>static/js/popper.min.js"></script><script src="</?php echo base_url(); ?>static/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
-<script src="<?php echo base_url(); ?>static/js/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>static/js/moment-with-locales.min.js"></script>
-<script src="<?php echo base_url(); ?>static/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="</?php echo base_url(); ?>static/js/moment.min.js"></script>
+<script src="<//?php echo base_url(); ?>static/js/moment-with-locales.min.js"></script>
+<script src="</?php echo base_url(); ?>static/js/tempusdominus-bootstrap-4.min.js"></script>-->
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
       feather.replace()
     </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 
-<script src="<?php echo base_url(); ?>static/js/bootstrap.min.js"></script>
 
 
 <!--
@@ -148,3 +45,35 @@
 -->
 </body>
 </html>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"<?php echo base_url(); ?>ajaxsearch/fetch",
+   method:"POST",
+   data:{query:query},
+   success:function(data){
+    $('#result').html(data);
+   }
+  })
+ }
+
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>

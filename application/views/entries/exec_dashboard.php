@@ -21,6 +21,7 @@
     </tr>
   </thead>
   <tbody>
+ <?php if( !empty($results) ) : ?>
   <?php foreach($entries as $entry) : ?>
     <tr>
       <th scope="row"><?php echo $entry['id']; ?></th>
@@ -34,27 +35,10 @@
       <td><a class="btn  btn-sm btn-primary" href="<?php echo site_url('/entries/'.$entry['folder_no']); ?>">Details</a></td>
     </tr>
     <?php endforeach; ?>
+<?php endif; ?>
   </tbody>
 </table>
 
 </div>
 
 </main>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-   <!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>-->
-   
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
-
-   
-  </body>
-</html>

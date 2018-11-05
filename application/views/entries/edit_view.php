@@ -17,40 +17,40 @@
 
 
 <div class="col-6 mx-auto">
-    <form>
+<?php echo form_open('entries/update'); ?>
      <div class="row">
       <div class="form-group col-md-6">
           <label  for="CaseNo.">Case Number</label>
-          <input type="text" class="form-control" id="CaseNo."  readonly class="form-control-plaintext" value="<?php echo $entry['case_no']; ?>">
+          <input type="text" class="form-control" id="CaseNo."   value="<?php echo $entry['case_no']; ?>">
       </div>
       <div class="form-group col-md-6">
           <label for="FolderNo.">Folder Number</label>
-          <input type="text" class="form-control" id="FolderNo." readonly class="form-control-plaintext" value="<?php echo $entry['folder_no']; ?>">
+          <input type="text" class="form-control" id="FolderNo." value="<?php echo $entry['folder_no']; ?>">
       </div>
 </div>
 
 <div class="row">
       <div class="form-group  col-md-4" >
           <label for="SerialNo.">Serial Number</label>
-          <input type="text" class="form-control" id="Serial No." readonly class="form-control-plaintext" value="<?php echo $entry['serial_no']; ?>"">
+          <input type="text" class="form-control" id="Serial No." value="<?php echo $entry['serial_no']; ?>"">
       </div>
       <div class="form-group col-md-4">
           <label for="">Department</label>
-          <input type="text" class="form-control" id="" readonly class="form-control-plaintext" value="<?php echo $entry['department']; ?>">
+          <input type="text" class="form-control" id=""  value="<?php echo $entry['department']; ?>">
       </div>
       <div class="form-group col-md-4">
           <label for="">Ward</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" id="" value="<?php echo $entry['ward']; ?>">
+          <input type="text" class="form-control"  id="" value="<?php echo $entry['ward']; ?>">
       </div>
 </div>
         <div class="row">
         <div class="form-group col-md-6">
           <label for="">First Name</label>
-          <input type="text" class="form-control"  readonly class="form-control-plaintext" id="" value="<?php echo $entry['first_name']; ?>">
+          <input type="text" class="form-control"   id="" value="<?php echo $entry['first_name']; ?>">
       </div>
       <div class="form-group col-md-6">
           <label for="">Last Name</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" id="" value="<?php echo $entry['last_name']; ?>">
+          <input type="text" class="form-control"  id="" value="<?php echo $entry['last_name']; ?>">
       </div>
       </div>
       <div class="row">
@@ -98,7 +98,7 @@
           <div class="input-group-prepend">
           
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" value="<?php echo $entry['amount_paid']; ?>" readonly class="form-control-plaintext" id="" placeholder="">
+            <input type="text" class="form-control" value="<?php echo $entry['amount_paid']; ?>" id="" placeholder="">
             </div>
         </div>  
          
@@ -106,26 +106,26 @@
     <div class="row">
     <div class="form-group col-md-4">
           <label for="">Non Drug Bill</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" value="<?php echo $entry['non_drug_bill']; ?>" id="" placeholder="">
+          <input type="text" class="form-control"  value="<?php echo $entry['non_drug_bill']; ?>" id="" placeholder="">
       </div>
       <div class="form-group col-md-4">
           <label for="">Drug Bill</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext"  value="<?php echo $entry['drug_bill']; ?>" id="" placeholder="">
+          <input type="text" class="form-control"   value="<?php echo $entry['drug_bill']; ?>" id="" placeholder="">
       </div>
       <div class="form-group col-md-4">
           <label for=""> Total</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" value="<?php echo $entry['total']; ?>" id="" placeholder="">
+          <input type="text" class="form-control"  value="<?php echo $entry['total']; ?>" id="" placeholder="">
+      </div><div class="form-group">
+          <label for="">Incurred by</label>
+          <input type="text" class="form-control"  value="<?php echo $entry['incurred_by']; ?>" id="" placeholder="" name="incurred_by">
       </div>
 </div>
 
-      <div class="form-group">
-          <label for="">Incurred by</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" value="<?php echo $entry['incurred_by']; ?>" id="" placeholder="" name="incurred_by">
-      </div>
+      
       <div class="row">
       <div class="form-group col-md-4">
           <label for="">Balance</label>
-          <input type="text" class="form-control" id=""  readonly class="form-control-plaintext" placeholder="" value="<?php echo $entry['balance']; ?>" name="balance">
+          <input type="text" class="form-control" id=""  placeholder="" value="<?php echo $entry['balance']; ?>" name="balance">
       </div><div class="form-group col-md-4">
           <label for="">Due Date</label>
           <div class="input-group date" id="due_date" data-target-input="nearest">
@@ -148,16 +148,16 @@
       <div class="row">
       <div class="form-group col-md-6">
           <label for="">Name Of Declarant</label>
-          <input type="text" class="form-control" id="" value="<?php echo $entry['declarant_name']; ?>" readonly class="form-control-plaintext" placeholder="" name="declarant_name">
+          <input type="text" class="form-control" id="" value="<?php echo $entry['declarant_name']; ?>"  placeholder="" name="declarant_name">
       </div>
       <div class="form-group col-md-6">
           <label for="">Occupation</label>
-          <input type="text" class="form-control" id="" value="<?php echo $entry['declarant_occupation']; ?>" placeholder="" readonly class="form-control-plaintext" name="declarant_occupation">
+          <input type="text" class="form-control" id="" value="<?php echo $entry['declarant_occupation']; ?>" placeholder=""  name="declarant_occupation">
       </div>
 </div>
       <div class="form-group">
           <label for="">Declarant Address</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" value="<?php echo $entry['declarant_address']; ?>" id="" placeholder="" name="declarant_address">
+          <input type="text" class="form-control"  value="<?php echo $entry['declarant_address']; ?>" id="" placeholder="" name="declarant_address">
       </div>
       <div class="form-group ">
       <label >Date</label>
@@ -173,17 +173,17 @@
       <div class="row">
       <div class="form-group col-md-6">
       <label for="">Name Of Guarantor</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" value="<?php echo $entry['guarantor_name']; ?>" id="" placeholder="" name="guarantor_name">
+          <input type="text" class="form-control"  value="<?php echo $entry['guarantor_name']; ?>" id="" placeholder="" name="guarantor_name">
 </div>
       
       <div class="form-group col-md-6">
           <label for="">Occupation</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" value="<?php echo $entry['guarantor_occupation']; ?>" id="" placeholder="" name="guarantor_occupation">
+          <input type="text" class="form-control"  value="<?php echo $entry['guarantor_occupation']; ?>" id="" placeholder="" name="guarantor_occupation">
       </div>
 </div>
       <div class="form-group">
           <label for="">Guarantor Address</label>
-          <input type="text" class="form-control" id="" readonly class="form-control-plaintext" placeholder="" value="<?php echo $entry['guarantor_address']; ?>" name="guarantor_address">
+          <input type="text" class="form-control" id="" placeholder="" value="<?php echo $entry['guarantor_address']; ?>" name="guarantor_address">
       </div>
       <div class="form-group ">
       <label >Date</label>
@@ -196,23 +196,23 @@
         </div>
         <div class="form-group">
           <label >Investigated By</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" id="investigator_name" placeholder="" value="<?php echo $entry['investigator_name']; ?>" name="investigator_name">
+          <input type="text" class="form-control"  id="investigator_name" placeholder="" value="<?php echo $entry['investigator_name']; ?>" name="investigator_name">
       </div>
         <h3>Recommendation</h3>
       <hr/>
       <div class="form-group">
           <label for="">Name</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" value="<?php echo $entry['recommender_name']; ?>" id="" placeholder="" name="recommender_name" >
+          <input type="text" class="form-control"  value="<?php echo $entry['recommender_name']; ?>" id="" placeholder="" name="recommender_name" >
       </div>
       <div class="form-group">
           <label for="">Position</label>
-          <input type="text" class="form-control" readonly class="form-control-plaintext" value="<?php echo $entry['recommender_position']; ?>" id="" placeholder="" name="recommender_position">
+          <input type="text" class="form-control"  value="<?php echo $entry['recommender_position']; ?>" id="" placeholder="" name="recommender_position">
       </div> 
       <h3 >Submit</h3>
       <hr/>
       <div class="row">
       <div class="form-group col-6">
-      <button class="btn btn-primary btn-lg btn-block"  href="<?php echo base_url(); ?>entries/edit/<?php echo $entry['folder_no']; ?>" type="submit">Edit</button>
+      <button class="btn btn-primary btn-lg btn-block"  href="<?php echo base_url(); ?>update" type="submit">Edit</button>
       </div>
       <div class="form-group col-6">
       <button class="btn btn-primary btn-lg btn-block"  href="<?php echo base_url(); ?>entries/view_entry" type="submit">Go Back</button>

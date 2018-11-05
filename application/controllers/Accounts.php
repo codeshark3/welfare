@@ -1,7 +1,7 @@
 <?php
 class Accounts extends CI_Controller {
 public function register_account() {
-		$this->form_validation->set_rules('Username', 'Username', 'required|min_length[5]|callback_check_username_exists');
+		$this->form_validation->set_rules('Username', 'Username', 'required|min_length[5]');
 		$this->form_validation->set_rules('Password', 'Password', 'required|min_length[8]');
 		$this->form_validation->set_rules('repeat_password', 'Repeat Password', 'required|matches[Password]');
 		if ($this->form_validation->run() == FALSE) {
@@ -26,7 +26,7 @@ public function register_account() {
 		}
 	}
 	
-	//check username exists
+	/*check username exists
 	function check_username_exists($username){
 		$this->form_validation->set_message('check_username_exists', 'That username is already taken. Please choose a different one.');
 		if($this->accounts_model->check_username_exists($username)){
@@ -35,7 +35,7 @@ public function register_account() {
 		}else{
 					return false;
 		}
-	}
+	}*/
 
     public function delete($id){
 		$this->load->model('accounts_model');

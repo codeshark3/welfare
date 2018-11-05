@@ -16,7 +16,7 @@ class Accounts_model extends CI_Model {
 
 	public function display_accounts() {
 		$this->load->database();
-		$this->db->order_by('id','DESC');
+		//$this->db->order_by('id','DESC');
 		$sql = $this->db->get('accounts');
 		return $sql->result();
 	}
