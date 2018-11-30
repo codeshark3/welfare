@@ -2,7 +2,7 @@
     class Users extends CI_Controller{
         public function login(){
            // $data['title'] = "Login";
-        //$this->load->view('templates/header'/*,$data*/);
+       // $this->load->view('templates/header'/*,$data*/);
             $this->load->view('users/login');
             $this->load->view('templates/footer');
 
@@ -15,7 +15,9 @@
             if ($this->form_validation->run() == FALSE) {
                 $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">' . validation_errors() . '</div>');
                 redirect(base_url('login'));
+
             }else {
+
                 $this->load->model('accounts_model');
                 $verify_login = $this->accounts_model->login($username);
                 if ($verify_login) {
@@ -23,13 +25,16 @@
                     $hash = password_verify($password,$hash_password);
                     if ($hash) {
                         $userdata = array( 
-                            'id' => "$verify_login->id",
+                         'id' => "$verify_login->id",
                             'username' => "$verify_login->username",
-                            'logged_in' => true,
-                            'account_type' => "$verify_login->account_type"
+                            'account_type' => "$verify_login->account_type",
+                            'logged_in' => TRUE
+                            
                             );
                         $this->session->set_userdata($userdata);
-                        $this->session->set_flashdata('successMessage','<div class="alert alert-success">Login Successfully, Welcome '.$this->session->userdata['username'].'</div>');
+                         //$this->session->set_userdata('logged_in','true');
+                       
+                        $this->session->set_flashdata('logged_in','Login Successful, Welcome ');
                         //use this to show and unshow approval button
                         if ($this->session->userdata('account_type') == "Admin") {
                             
@@ -42,17 +47,24 @@
                     }else {
                         $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Incorrect Login Name Or Password</div>');
                     redirect(base_url('login'));
-                    }
-                }else {
-                    $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Incorrect Login Name Or Password</div>');
-                    redirect(base_url('login'));
-                }
+                    }}
+                // else {
+                //     $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Incorrect Login Name Or Password</div>');
+                //     redirect(base_url('login'));
+                // }
             }
         }
+
         public function logout() {
-            $data = array('id','username','logged_in','account_type');
-            $this->session->unset_userdata($data);
-            $this->session->set_flashdata('successMessage','<div class="alert alert-success">Logout Successfully</div>');
+           // $data = array('id','username','logged_in','account_type');
+          
+           
+            $this->session->unset_userdata('id');
+            $this->session->unset_userdata('username');
+            $this->session->unset_userdata('logged_in');
+            $this->session->unset_userdata('account_type');
+           // $this->session->sess_destroy();
+            $this->session->set_flashdata('logged_out','Logged Out Successfully');
             redirect(base_url('login'));
         }
 

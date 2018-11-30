@@ -1,13 +1,17 @@
 <?php
     class Entries  extends CI_Controller{
-/*
-        function __construct() {
+
+       public function __construct() {
             parent::__construct();
-        
-            
-            }
-*/
-        public function index(){
+            if (!$this->session->userdata('account_type') ) {
+       //      
+   redirect(base_url('login'));
+     
+}
+
+  $this->load->model('entry_model');
+ }      
+  public function index(){
         
            /* $data['title'] = ucfirst($page);*/
 
@@ -16,23 +20,25 @@
         }
 
         public function view_entry(){
-            //check login status
-            if(!$this->session->userdata('logged_in')){
-                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
-                redirect('users/login');
-            }
-            //$data['entries'] = $this->entry_model->get_entry();
+       // if ($this->session->userdata('logged_in') AND $this->session->userdata('logged_in') === 'TRUE' ) {
+       //      $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Login Is Required</div>');
+       //      redirect(base_url('login'));
+       //  }
+          
+             //$data['entries'] = $this->entry_model->get_entry();
            $this->load->view('templates/header');
             $this->load->view('templates/sidebar');
+            
         $this->load->view('entries/view_entry'/*,$data*/);
+        
           $this->load->view('templates/footer');
+        
+          
         }
       
         public function view_detail($folder_no = NULL){
-            if(!$this->session->userdata('logged_in')){
-                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
-                redirect('users/login');
-            }
+            
+          $userdata = $this->session->userdata();
             $data['entry'] = $this->entry_model->get_entry($folder_no);
           
 
@@ -50,11 +56,8 @@
         }
 
         public function create(){
-            if(!$this->session->userdata('logged_in')){
-                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
-                redirect('users/login');
-            }
-            //form validation rules
+           
+           //form validation rules
        
             $this->form_validation->set_rules('case_no', 'Case Number', 'required');
             $this->form_validation->set_rules('folder_no','Folder Number','required');
@@ -97,15 +100,13 @@
             } else {
                 $this->entry_model->create_entry();
                 redirect('entries'); 
+                  $this->session->set_flashdata('entry_created','New Entry Created Successfully ');
             }
             
         }
 
-        public function edit($folder_no ){
-            if(!$this->session->userdata('logged_in')){
-                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
-                redirect('users/login');
-            }
+        public function edit($folder_no){
+        
             $data['entry'] = $this->entry_model->get_entry($folder_no);
           
 
@@ -113,7 +114,7 @@
                 show_404();
             }
 
-            #$data['case_no'] = $data['first_name']['last_name'];
+           // $data['case_no'] = $data['first_name']['last_name'];
            
 
             $this->load->view('templates/header');
@@ -123,22 +124,23 @@
         }
 
 		public function update(){
-			// Check login
-			if(!$this->session->userdata('logged_in')){
-				redirect('users/login');
-			}
-			$this->entry_model->update_entry();
-			// Set message
-			$this->session->set_flashdata('entry_updated', 'Your entry has been updated');
-			redirect('entries');
+		
+			 $this->entry_model->update_entry();
+			// // Set message
+			// $this->session->set_flashdata('entry_updated', 'Your entry has been updated');
+			// redirect('entries');
+        }
+
+        public function update_approval(){
+            $this->entry_model->update_approval();
+            // Set message
+            $this->session->set_flashdata('approved', 'Entry has been approved');
+            redirect('dashboard');
         }
         
         public function dashboard(){
             //check login status
-            if(!$this->session->userdata('logged_in')){
-                $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Please Login to view this page.</div>');
-                redirect('users/login');
-            }
+            
             $data['entries'] = $this->entry_model->get_dashboard();
            // $this->load->view('templates/header');
             //$this->load->view('templates/sidebar');

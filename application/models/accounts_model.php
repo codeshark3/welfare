@@ -1,13 +1,13 @@
 <?php
 
 class Accounts_model extends CI_Model {
-	public function insert_account ($username,$password,$account_type,$date_created,$created_by) {
+	public function insert_account ($username,$password,$account_type,$created_by) {
 		$encrypt_password = password_hash($password,PASSWORD_DEFAULT);
 		$data = array(
 			'username' => "$username",
 			'password' => "$encrypt_password",
 			'account_type' => "$account_type",
-			'date_created' => "$date_created",
+			//'date_created' => "$date_created",
 			'created_by' => "$created_by"
 			);
 		$this->load->database();

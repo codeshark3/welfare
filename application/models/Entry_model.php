@@ -62,6 +62,7 @@
           
             $folder_no = url_title($this->input->post('folder_no'));
 			$data = array(
+                //'id' =>$this->input->post('id'),
                 'case_no' =>$this->input->post('case_no'),
                 // 'folder_no' => $this->input->entry('folder_no'),
                 'folder_no' => $folder_no,
@@ -94,15 +95,29 @@
                 'recommender_name' =>$this->input->post('recommender_name'), 
                 'recommender_position' =>$this->input->post('recommender_position'), 
                 'recommendation' =>$this->input->post('recommendation'), 
-                'approval' =>$this->input->post('approval'), 
+                
                 'guarantor_date' =>$this->input->post('guarantor_date')
 
 			);
+           // $this->load->database();
 			$this->db->where('id', $this->input->post('id'));
 			return $this->db->update('entries', $data);
         }
         
-        
+        public function update_approval(){
+             $folder_no = url_title($this->input->post('folder_no'));
+              $data = array(
+             'folder_no' => $folder_no,
+             'approval' =>$this->input->post('approval')
+
+         );
+              $id = $this->input->post('id');
+             $this->db->where($id,NULL , FALSe);
+            return $this->db->update('entries', $data);
+        }
+
+
+
         public function get_dashboard($folder_no = FALSE){    
             print_r($folder_no);
             if($folder_no === FALSE){
