@@ -3,13 +3,13 @@
  </div>
 
 <?php echo validation_errors(); ?>
-   <?php echo form_open('bill/create_bill'); ?>
+   <?php echo form_open('bill/approval'); ?>
   
    <div class=" mx-auto col-10 mb-4 "> 
-     
+      <input type="hidden" name="bill_id" value="<?php echo $bill['bill_id']; ?>">
       <div class="form-group ">
           <label >Patient Name</label>
-          <input type="text" class="form-control" id="CaseNo." placeholder="Patient Name" name="patient_name" value="<?php echo $entry['patient_name']; ?>">
+          <input type="text" readonly class="form-control" id="CaseNo." placeholder="Patient Name" name="patient_name" value="<?php echo $bill['patient_name']; ?>">
       </div>
 
 
@@ -17,7 +17,7 @@
       <div class="form-group col-6" >
          <label>Entry Date</label>
            <div class="start_date input-group mb-4">
-    <input class="form-control start_date" type="text" placeholder="Entry Date" id="date_datepicker" name="entry_date" value="<?php echo $entry['entry_date']; ?>">
+    <input class="form-control start_date" type="text" readonly placeholder="Entry Date" id="date_datepicker" name="entry_date" value="<?php echo $bill['entry_date']; ?>">
     <div class="input-group-append">
       <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
       </div>
@@ -26,7 +26,7 @@
       <div class="form-group col-6">
           <label  >Submission Date</label>
            <div class="start_date input-group mb-4">
-    <input class="form-control start_date" type="text" placeholder="Submission Date" id="subdate_datepicker" name="sub_date" value="<?php echo $entry['sub_date']; ?>">
+    <input class="form-control start_date" type="text" readonly placeholder="Submission Date" id="subdate_datepicker" name="sub_date" value="<?php echo $bill['sub_date']; ?>">
     <div class="input-group-append">
       <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
     </div>
@@ -37,12 +37,12 @@
 <div class="row">
       <div class="form-group col-6">
          <label >Folder Number</label>
-          <input type="text" class="form-control" id="FolderNo." placeholder="Folder Number" name="folder_no" value="<?php echo $entry['folder_no']; ?>">
+          <input type="text" readonly class="form-control" id="FolderNo." placeholder="Folder Number" name="folder_no" value="<?php echo $bill['folder_no']; ?>">
           
     </div>
      <div class="form-group col-6">
           <label >Reciept Number</label>
-          <input type="text" class="form-control" id="" placeholder="" name="reciept_no" value="<?php echo $entry['reciept_no']; ?>">
+          <input type="text" readonly class="form-control" id="" placeholder="" name="receipt_no" value="<?php echo $bill['receipt_no']; ?>">
       </div>
          
       </div>
@@ -56,7 +56,7 @@
   
           <div class="input-group-prepend">
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" id="" placeholder="Drug Bill" name="drug_bill" value="<?php echo $entry['drug_bill']; ?>">
+            <input type="text" readonly class="form-control" id="" placeholder="Drug Bill" name="drug_bill" value="<?php echo $bill['drug_bill']; ?>">
             </div>
       </div>
       <div class="form-group col-6">
@@ -64,7 +64,7 @@
         
           <div class="input-group-prepend">
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" id="" placeholder="Service Bill" name="service_bill" value="<?php echo $entry['service_bill']; ?>">
+            <input type="text" readonly class="form-control" id="" placeholder="Service Bill" name="service_bill" value="<?php echo $bill['service_bill']; ?>">
             </div>
       </div>
       </div>
@@ -77,7 +77,7 @@
          
          <div class="input-group-prepend">
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" id="" placeholder="Total Bill Payable" name="total" value="<?php echo $entry['total']; ?>">
+            <input type="text" readonly class="form-control" id="" placeholder="Total Bill Payable" name="total" value="<?php echo $bill['total']; ?>">
             </div>
             </div> 
 
@@ -85,7 +85,7 @@
           <label >Payment</label>
           <div class="input-group-prepend">
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" id="" placeholder="" name="payment" value="<?php echo $entry['payment']; ?>">
+            <input type="text" readonly class="form-control" id="" placeholder="" name="payment" value="<?php echo $bill['payment']; ?>">
             </div>
         </div>  
         
@@ -100,7 +100,7 @@
           
            <div class="input-group-prepend">
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" id="" placeholder="Total Payment" name="total_payment" value="<?php echo $entry['total_payment']; ?>">
+            <input type="text" readonly class="form-control" id="" placeholder="Total Payment" name="total_payment" value="<?php echo $bill['total_payment']; ?>">
             </div>
       </div>
       
@@ -109,7 +109,7 @@
           
            <div class="input-group-prepend">
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" id="" placeholder="Balance" name="balance" value="<?php echo $entry['balance']; ?>">
+            <input type="text" readonly class="form-control" id="" placeholder="Balance" name="balance" value="<?php echo $bill['balance']; ?>">
             </div>
       </div>
     
@@ -117,7 +117,7 @@
 
       <div class="form-group  ">
           <label >Remarks</label>
-         <textarea class="form-control" id="" placeholder="" name="remarks" value="<?php echo $entry['remarks']; ?>"></textarea>
+         <textarea  type="text" class="form-control" id="" readonly placeholder="" name="remarks" value="<?php echo $bill['remarks']; ?>"></textarea>
       </div>
   
 
@@ -131,12 +131,12 @@
       <div class="row">
           <div class="form-group col-6">
           <label  >Social Welfare Officer Name</label>
-          <input type="text" class="form-control" id="" placeholder="" name="sw_name" value="<?php echo $entry['sw_name']; ?>">
+          <input type="text" readonly class="form-control" id="" placeholder="" name="sw_name" value="<?php echo $bill['sw_name']; ?>">
       </div>
       <div class="form-group col-6" >
          <label>Date</label>
            <div class="start_date input-group mb-4">
-    <input class="form-control start_date" type="text" placeholder="Date" id="sw_datepicker" name="sw_date" value="<?php echo $entry['sw_date']; ?>">
+    <input class="form-control start_date" type="text" readonly placeholder="Date" id="sw_datepicker" name="sw_date" value="<?php echo $bill['sw_date']; ?>">
     <div class="input-group-append">
       <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
       </div>
@@ -149,12 +149,12 @@
        <div class="row">
           <div class="form-group col-6">
           <label  >Accountant Name</label>
-          <input type="text" class="form-control" id="" placeholder="" name="accountant_name" value="<?php echo $entry['accountant_name']; ?>">
+          <input type="text" readonly class="form-control" id="" placeholder="" name="accountant_name" value="<?php echo $bill['accountant_name']; ?>">
       </div>
       <div class="form-group col-6" >
          <label>Date</label>
            <div class="start_date input-group mb-4">
-    <input class="form-control start_date" type="text" placeholder="Date" id="acc_datepicker" name="acc_date" value="<?php echo $entry['acc_date']; ?>">
+    <input class="form-control start_date" type="text" readonly placeholder="Date" id="acc_datepicker" name="acc_date" value="<?php echo $bill['acc_date']; ?>">
     <div class="input-group-append">
       <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
       </div>
@@ -165,7 +165,8 @@
 
 
        <div class="form-group ">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+       
+        <button class="btn btn-primary btn-lg btn-block"  href="<?php echo base_url(); ?>entries/view_entry" type="submit">Go Back</button>
          </div>
        </div>
     </form>

@@ -9,86 +9,118 @@
                 redirect(base_url('login'));
      
 }
+
+$this->load->model('bill_model');
  } 
             
             
 
-        public function index(){
+       //  public function index(){
         
-           /* $data['title'] = ucfirst($page);*/
-       $this->load->view('templates/header');
-            $this->load->view('templates/sidebar');
+       //     /* $data['title'] = ucfirst($page);*/
+       // $this->load->view('templates/header');
+       //      $this->load->view('templates/sidebar');
             
-        $this->load->view('bill/new_bill'/*,$data*/);
+       //  $this->load->view('bill/new_bill'/*,$data*/);
         
-          $this->load->view('templates/footer');
+       //    $this->load->view('templates/footer');
         
         
             
-        }
+       //  }
 
-        public function bill_fetch()
-        {
-         $output = '';
-         $query = '';
-         $this->load->model('bill_model');
-         if($this->input->post('query'))
-         {
-          $query = $this->input->post('query');
-         }
-         $data = $this->bill_model->fetch_data($query);
-         //print_r($data);
+
+ public function fetch(){  
+         $this->load->model("bill_model");  
+           $fetch_data = $this->bill_model->make_datatables();  
+           $data = array();  
+           foreach($fetch_data as $row)  
+           {  
+                $sub_array = array();  
+                $sub_array[] =  $row->patient_name; 
+                $sub_array[] = $row->folder_no;
+                $sub_array[] = $row->total;  
+                $sub_array[] = $row->receipt_no;  
+                $sub_array[] = $row->balance;
+
+                $sub_array[] = '<a class="btn btn-primary btn-xs" name="update" type="button" id="'.$row->bill_id.'" href="tracking/edit/'.$row->folder_no.'">Update</a>';  
+                $sub_array[] = '<a type="button" class="btn btn-success btn-xs" name="delete" href="tracking/'.$row->folder_no .'" id="'.$row->bill_id.'" >details</a>';  
+                $data[] = $sub_array;  
+           }  
+           $output = array(  
+                "draw"                    =>     intval($_POST["draw"]),  
+                "recordsTotal"          =>      $this->bill_model->get_all_data(),  
+                "recordsFiltered"     =>     $this->bill_model->get_filtered_data(),  
+                "data"                    =>     $data  
+           );  
+           echo json_encode($output);  
+      }  
+
+
+        // public function bill_fetch()
+        // {
+        //  $output = '';
+        //  $query = '';
+        //  $this->load->model('bill_model');
+        //  if($this->input->post('query'))
+        //  {
+        //   $query = $this->input->post('query');
+        //  }
+        //  $data = $this->bill_model->fetch_data($query);
+        //  //print_r($data);
        
          
-        $output .= '
-         <div class="table-responsive">
-            <table class="table table-bordered table-striped">
-             <tr>
-             <th>id</th>
-             <th>Patient Name</th>
-             <th>Folder Number</th>
-             <th>Submission Date</th>
-             <th>total</th>
+        // $output .= '
+        //  <div class="table-responsive">
+        //     <table class="table table-bordered table-striped">
+        //      <tr>
+        //      <th>id</th>
+        //      <th>Patient Name</th>
+        //      <th>Folder Number</th>
+        //      <th>Submission Date</th>
+        //      <th>total</th>
              
-             <th>Reciept Number</th>
-             <th>Total</th>
-             <th>Total Payment</th>
-             <th>Edit</th> 
-             <th>Details</th>
-             </tr>
-         ';
-         if($data->num_rows() > 0)
-         {
-          foreach($data->result() as $row)
-          {
-           $output .= '
-             <tr>
-              <td>'.$row->bill_id.'</td>
-              <td>'.$row->patient_name.'</td>
-              <td>'.$row->folder_no.'</td>
-              <td>'.$row->sub_date.'</td>
-              <td>'.$row->total.'</td>
+        //      <th>Reciept Number</th>
+        //      <th>Total</th>
+        //      <th>Total Payment</th>
+        //      <th>Edit</th> 
+        //      <th>Details</th>
+        //      </tr>
+        //  ';
+        //  if($data->num_rows() > 0)
+        //  {
+        //   foreach($data->result() as $row)
+        //   {
+        //    $output .= '
+        //      <tr>
+        //       <td>'.$row->bill_id.'</td>
+        //       <td>'.$row->patient_name.'</td>
+        //       <td>'.$row->folder_no.'</td>
+        //       <td>'.$row->sub_date.'</td>
+        //       <td>'.$row->total.'</td>
               
-              <td>'.$row->receipt_no.'</td>
-              <td>'.$row->total.'</td>
-              <td>'.$row->total_payment.'</td> 
-              <td><a class="btn btn-primary" href="entries/edit/'.$row->folder_no.'">Edit</a></td>
-               <td><a class="btn btn-success" href="entries/'.$row->folder_no.'">Details</a></td>
+        //       <td>'.$row->receipt_no.'</td>
+        //       <td>'.$row->total.'</td>
+        //       <td>'.$row->total_payment.'</td> 
+        //       <td><a class="btn btn-primary" href="tracking/edit/'.$row->folder_no.'">Edit</a></td>
+
+              
+        //        <td><a class="btn btn-success" href="tracking/'.$row->folder_no.'">Details</a></td>
                
-             </tr>
-           ';
+        //      </tr>
+        //    ';
            
-          }
-         }
-         else
-         {
-          $output .= '<tr>
-              <td colspan="5">No Data Found</td>
-             </tr>';
-         }
-         $output .= '</table>';
-         echo $output;
-        }
+        //   }//<td><a class="btn btn-primary" href="/welfare/tracking/bill/edit/'.$row->folder_no.'">Edit</a></td>
+        //  }
+        //  else
+        //  {
+        //   $output .= '<tr>
+        //       <td colspan="5">No Data Found</td>
+        //      </tr>';
+        //  }
+        //  $output .= '</table>';
+        //  echo $output;
+        // }
         
       
 
@@ -107,21 +139,22 @@
           $this->load->view('templates/footer');
         }
       
-        public function view_detail($folder_no = NULL){
-            
-            $data['entry'] = $this->entry_model->get_entry($folder_no);
+        public function bill_detail($folder_no = NULL){
+              $userdata = $this->session->userdata();
+              $data['bill'] = $this->bill_model->get_bill($folder_no);
           
 
-            if(empty($data['entry'])){
+            if(empty($data['bill'])){
                 show_404();
             }
 
+          
             #$data['case_no'] = $data['first_name']['last_name'];
            
 
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');
-            $this->load->view('entries/details',$data);
+            $this->load->view('bill/bill_details',$data);
             $this->load->view('templates/footer');
         }
 
@@ -168,12 +201,14 @@
             
         }
 
-        public function edit_bill($folder_no ){
+
+        //edit bill
+        public function edit($folder_no ){
          
-            $data['entry'] = $this->entry_model->get_entry($folder_no);
+            $data['bill'] = $this->bill_model->get_bill($folder_no);
           
 
-            if(empty($data['entry'])){
+            if(empty($data['bill'])){
                 show_404();
             }
 
@@ -182,46 +217,20 @@
 
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');
-            $this->load->view('entries/edit_view',$data);
+            $this->load->view('bill/edit',$data);
             $this->load->view('templates/footer');
         }
 
+        //update bills
 		public function update(){
 		
-			$this->entry_model->update_bill();
+			$this->bill_model->update_bill();
 			// Set message
 			$this->session->set_flashdata('entry_updated', 'Your entry has been updated');
-			redirect('entries');
+			redirect('tracking/view');
         }
         
-        public function dashboard(){
-            //check login status
-            
-            $data['entries'] = $this->entry_model->get_dashboard();
-           // $this->load->view('templates/header');
-            //$this->load->view('templates/sidebar');
-            $this->load->view('entries/exec_dashboard',$data);
-            $this->load->view('templates/footer');
-        }
+       
     
-
-      public function bill_edit($folder_no ){
-          
-            $data['entry'] = $this->entry_model->get_entry($folder_no);
-          
-
-            if(empty($data['entry'])){
-                show_404();
-            }     
-
-            #$data['case_no'] = $data['first_name']['last_name'];
-           
-
-            $this->load->view('templates/header');
-            $this->load->view('templates/sidebar');
-            $this->load->view('bill/bill_edit',$data);
-            $this->load->view('templates/footer');
-        }
-      
 
 }

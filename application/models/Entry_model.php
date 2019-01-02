@@ -3,9 +3,61 @@
         public function __construct(){
             $this->load->database();
         }
-  
+      var $table = "entries";  
+      var $select_column = array("id", "first_name", "last_name", "folder_no","case_no","serial_no","total","approval");  
+      var $order_column = array(null, "first_name", "last_name", null, null); 
+        
+      
+      function make_query()  
+      {  
+           $this->db->select($this->select_column);  
+           $this->db->from($this->table);
+          
+           
+           if(isset($_POST["search"]["value"]))  
+           {  
+                $this->db->like("first_name", $_POST["search"]["value"]);  
+                $this->db->or_like("last_name", $_POST["search"]["value"]);  
 
-        public function get_entry($folder_no = FALSE){    
+                $this->db->or_like("folder_no", $_POST["search"]["value"]);  
+           }  
+           if(isset($_POST["order"]))  
+           {  
+                $this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);  
+           }  
+           else  
+           {  
+                $this->db->order_by('id', 'DESC');  
+           }  
+      }  
+      function make_datatables(){  
+           $this->make_query();  
+           if($_POST["length"] != -1)  
+           {  
+                $this->db->limit($_POST['length'], $_POST['start']);  
+           }  
+           $query = $this->db->get();  
+           return $query->result();  
+      }  
+      function get_filtered_data(){  
+           $this->make_query();  
+           $query = $this->db->get();  
+           return $query->num_rows();  
+      }       
+      function get_all_data()  
+      {  
+           $this->db->select("*");  
+           $this->db->from($this->table);
+
+           return $this->db->count_all_results();  
+      }  
+          
+            //
+
+
+
+        public function get_entry($folder_no = FALSE){ 
+       
             if($folder_no === FALSE){
                 //$this->db->order_by('id', 'DESC');
                 $query = $this->db->get('entries');
@@ -15,6 +67,39 @@
             $query = $this->db->get_where('entries', array('folder_no' => $folder_no));
             return $query->row_array();
             }
+
+
+
+
+      // public function get_entry($folder_no = FALSE,$limit = FALSE, $offset = FALSE){ 
+      //   if($limit){
+      //          $this->db->limit($limit, $offset);
+      //        }   
+
+      //       if($folder_no === FALSE){
+      //            //$this->db->order_by('id', 'DESC');
+      //            $query = $this->db->get('entries');
+      //            return $query->result_array();
+      //       }
+            
+      //        $query = $this->db->get_where('entries', array('folder_no' => $folder_no));
+      //       return $query->row_array();
+      //       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
         public function create_entry(){
             $folder_no = url_title($this->input->post('folder_no'));
 
@@ -104,15 +189,15 @@
 			return $this->db->update('entries', $data);
         }
         
-        public function update_approval(){
+        public function approval(){
              $folder_no = url_title($this->input->post('folder_no'));
               $data = array(
-             'folder_no' => $folder_no,
+            // 'folder_no' => $folder_no,
              'approval' =>$this->input->post('approval')
 
          );
-              $id = $this->input->post('id');
-             $this->db->where($id,NULL , FALSe);
+             
+            $this->db->where('id', $this->input->post('id'));
             return $this->db->update('entries', $data);
         }
 
@@ -143,3 +228,8 @@
            
             }
   }
+
+
+
+
+            

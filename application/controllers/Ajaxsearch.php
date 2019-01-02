@@ -38,7 +38,7 @@ class Ajaxsearch extends CI_Controller {
       <th>Approval</th>
       <th>Edit</th> 
       <th>Details</th>
-      <th>Approval</th>
+  
       </tr>
   ';
   if($data->num_rows() > 0)
@@ -58,8 +58,6 @@ class Ajaxsearch extends CI_Controller {
        <td><a class="btn btn-primary" href="entries/edit/'.$row->folder_no.'">Edit</a></td>
       <td><a class="btn btn-success" href="entries/'.$row->folder_no.'">Details</a></td>
          
-          <input type="hidden" name="ap" value="Approved" />
-        <td><a class="btn btn-success" href="entries/update_approval/'.$row->folder_no.'">Approve</a></td>
 
       </tr>
     ';

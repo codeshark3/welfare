@@ -8,26 +8,22 @@
    redirect(base_url('login'));
      
 }
-
-  $this->load->model('entry_model');
+ $this->load->model('entry_model');
+ 
  }      
-  public function index(){
+  // public function index(){
         
-           /* $data['title'] = ucfirst($page);*/
+  //           $data['title'] = ucfirst($page);
 
         
             
-        }
+  //       }
 
         public function view_entry(){
-       // if ($this->session->userdata('logged_in') AND $this->session->userdata('logged_in') === 'TRUE' ) {
-       //      $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Login Is Required</div>');
-       //      redirect(base_url('login'));
-       //  }
-          
-             //$data['entries'] = $this->entry_model->get_entry();
+
+   $data['entries'] = $this->entry_model->get_entry(FALSE);
            $this->load->view('templates/header');
-            $this->load->view('templates/sidebar');
+       $this->load->view('templates/sidebar');
             
         $this->load->view('entries/view_entry'/*,$data*/);
         
@@ -35,7 +31,67 @@
         
           
         }
-      
+
+ public function fetch(){  
+          // $this->load->model("entry_model");  
+           $fetch_data = $this->entry_model->make_datatables();  
+           $data = array();  
+           foreach($fetch_data as $row)  
+           {  
+                $sub_array = array();  
+                $sub_array[] =  $row->last_name; 
+                $sub_array[] = $row->first_name;  
+                $sub_array[] = $row->folder_no;
+                $sub_array[] = $row->case_no;  
+                $sub_array[] = $row->serial_no;
+                $sub_array[] = $row->total;
+                $sub_array[] = $row->approval;
+
+                $sub_array[] = '<a  class="btn btn-primary btn-sm m-0" name="update" type="button" id="'.$row->id.'" href="entries/edit/'.$row->folder_no.'">Update</a>';  
+                $sub_array[] = '<a type="button" class="btn btn-default  btn-sm m-0" name="delete" href="entries/'.$row->folder_no.'" id="'.$row->id.'" >Details</a>';  
+                $data[] = $sub_array;  
+           }  
+           $output = array(  
+                "draw"                    =>     intval($_POST["draw"]),  
+                "recordsTotal"          =>      $this->entry_model->get_all_data(),  
+                "recordsFiltered"     =>     $this->entry_model->get_filtered_data(),  
+                "data"                    =>     $data  
+           );  
+           echo json_encode($output);  
+      }  
+
+
+  // public function view_entry($offset = 0){
+   
+  //           // Pagination Config    
+  //           $config['base_url'] = base_url() . 'entries/';
+  //           $config['total_rows'] = $this->db->count_all('entries');
+  //           $config['per_page'] = 1;
+  //           $config['uri_segment'] = 2;
+  //           $config['attributes'] = array('class' => 'pagination-link');
+
+  //           // Init Pagination
+  //           $this->pagination->initialize($config);
+
+  //  $data['entries'] = $this->entry_model->get_entry(FALSE, $config['per_page'],$offset);
+  //          $this->load->view('templates/header');
+  //           $this->load->view('templates/sidebar');
+            
+  //       $this->load->view('entries/view_entry'/*,$data*/);
+        
+  //         $this->load->view('templates/footer');
+        
+          
+  //       }
+
+
+
+
+
+
+
+
+  //     ///////////////////////////////////////////////////////////////
         public function view_detail($folder_no = NULL){
             
           $userdata = $this->session->userdata();
@@ -54,6 +110,7 @@
             $this->load->view('entries/details',$data);
             $this->load->view('templates/footer');
         }
+
 
         public function create(){
            
@@ -126,15 +183,15 @@
 		public function update(){
 		
 			 $this->entry_model->update_entry();
-			// // Set message
-			// $this->session->set_flashdata('entry_updated', 'Your entry has been updated');
-			// redirect('entries');
+			// Set message
+			$this->session->set_flashdata('entry_updated', 'Your entry has been updated');
+			redirect('entries');
         }
 
-        public function update_approval(){
-            $this->entry_model->update_approval();
+        public function approval(){
+            $this->entry_model->approval();
             // Set message
-            $this->session->set_flashdata('approved', 'Entry has been approved');
+            $this->session->set_flashdata('approved', 'Approval status has been updated');
             redirect('dashboard');
         }
         
@@ -149,3 +206,8 @@
         }
     
     }   
+
+
+
+
+      

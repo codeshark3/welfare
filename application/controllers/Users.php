@@ -45,7 +45,7 @@
                             redirect(base_url('entries'));
                         }
                     }else {
-                        $this->session->set_flashdata('errorMessage','<div class="alert alert-danger">Incorrect Login Name Or Password</div>');
+                        $this->session->set_flashdata('invalid','<div class="alert alert-danger">Incorrect Login Name Or Password</div>');
                     redirect(base_url('login'));
                     }}
                 // else {

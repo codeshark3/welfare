@@ -1,10 +1,10 @@
-
-
-        
-     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">NEW ENTRY</h1>
- </div>
-
+<div class="card ">
+ 
+      <div class="view overlay gradient-card-header blue-gradient">  
+     <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"> -->
+            <h1 class="card-header-title text-center" style="color: #fff"><b>NEW ENTRY</b></h1>
+ <!-- </div> --></div>
+ <div class="card-body card-body-cascade">
  <?php echo validation_errors(); ?>
    <?php echo form_open('entries/create'); ?>
   
@@ -27,21 +27,21 @@
       </div>
       <div class="form-group col-4">
           <label for="">Department</label>
-          <input type="text" class="form-control" id="" placeholder="" name="department">
+          <input type="text" class="form-control" id="" placeholder="Department" name="department">
       </div>
       <div class="form-group col-4">
           <label for="">Ward</label>
-          <input type="text" class="form-control" id="" placeholder="" name="ward">
+          <input type="text" class="form-control" id="" placeholder="Ward" name="ward">
       </div>
 </div>
         <div class="row">
         <div class="form-group col-6">
           <label for="">First Name</label>
-          <input type="text" class="form-control" id="" placeholder="" name="first_name">
+          <input type="text" class="form-control" id="" placeholder="First Name" name="first_name">
       </div>
       <div class="form-group col-6">
           <label >Last Name</label>
-          <input type="text" class="form-control" id="" placeholder="" name="last_name">
+          <input type="text" class="form-control" id="" placeholder="Last Name" name="last_name">
       </div>
       </div>
       <div class="row">
@@ -89,35 +89,46 @@
           <div class="input-group-prepend">
           
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" id="" placeholder="" name="amount_paid">
+            <input type="text" class="form-control" id="" placeholder="Amount Paid" name="amount_paid">
             </div>
         </div>  
         
     </div>
     <div class="row">
     <div class="form-group col-4">
+
           <label for="">Non Drug Bill</label>
-          <input type="text" class="form-control" id="" placeholder="" name="non_drug_bill">
-      </div>
+         <div class="input-group-prepend">
+          <span class="input-group-text">GHS</span>
+          <input type="text" class="form-control" id="" placeholder="Non Drug Bill" name="non_drug_bill">
+      </div></div>
       <div class="form-group col-4">
-          <label for="">Drug Bill</label>
+        <label for="">Drug Bill</label>
+       <div class="input-group-prepend">
+          <span class="input-group-text">GHS</span>
+          
           <input type="text" class="form-control" id="" placeholder="" name="drug_bill">
-      </div>
+      </div></div>
       <div class="form-group col-4">
           <label for=""> Total</label>
-          <input type="text" class="form-control" id="" placeholder="" name="total">
-      </div>
+           <div class="input-group-prepend">
+          <span class="input-group-text">GHS</span>
+          <input type="text" class="form-control" id="" placeholder="Total" name="total">
+      </div></div>
 </div>
 
       <div class="form-group">
           <label for="">Incurred by</label>
-          <input type="text" class="form-control" id="" placeholder="" name="incurred_by">
+          <input type="text" class="form-control" id="" placeholder="Incurred_by" name="incurred_by">
       </div>
       <div class="row">
       <div class="form-group col-4">
           <label for="">Balance</label>
-          <input type="text" class="form-control" id="" placeholder="" name="balance">
-      </div><div class="form-group col-4">
+          <div class="input-group-prepend">
+          <span class="input-group-text">GHS</span>
+          <input type="text" class="form-control" id="" placeholder="Balance" name="balance">
+      </div></div>
+      <div class="form-group col-4">
           <label for="">Due Date</label>
            <div class="start_date input-group mb-4">
     <input class="form-control start_date" type="text" placeholder="Due Date" id="due_datepicker" name="due_date">
@@ -141,21 +152,21 @@
       <div class="row">
       <div class="form-group col-6">
           <label for="">Name Of Declarant</label>
-          <input type="text" class="form-control" id="" placeholder="" name="declarant_name">
+          <input type="text" class="form-control" id="" placeholder="Declarant Name" name="declarant_name">
       </div>
       <div class="form-group col-6">
           <label for="">Occupation</label>
-          <input type="text" class="form-control" id="" placeholder="" name="declarant_occupation">
+          <input type="text" class="form-control" id="" placeholder="Occupation" name="declarant_occupation">
       </div>
 </div>
       <div class="form-group">
           <label for="">Declarant Address</label>
-          <input type="text" class="form-control" id="" placeholder="" name="declarant_address">
+          <input type="text" class="form-control" id="" placeholder="Address" name="declarant_address">
       </div>
       <div class="form-group ">
       <label >Date</label>
          <div class="start_date input-group mb-4">
-    <input class="form-control start_date" type="text" placeholder="Entry Date" id="declarant_datepicker" name="declarant_date">
+    <input class="form-control start_date" type="text" placeholder="Date" id="declarant_datepicker" name="declarant_date">
     <div class="input-group-append">
       <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
       </div>
@@ -165,18 +176,18 @@
       <hr/>
       <div class="row">
       <div class="form-group col-6">
-      <label for="">Name Of Guarantor</label>
-          <input type="text" class="form-control" id="" placeholder="" name="guarantor_name">
+      <label >Name Of Guarantor</label>
+          <input type="text" class="form-control" id="" placeholder="Guarantor Name" name="guarantor_name">
 </div>
       
       <div class="form-group col-6">
-          <label for="">Occupation</label>
-          <input type="text" class="form-control" id="" placeholder="" name="guarantor_occupation">
+          <label >Occupation</label>
+          <input type="text" class="form-control" id="" placeholder="Occupation" name="guarantor_occupation">
       </div>
 </div>
       <div class="form-group">
-          <label for="">Guarantor Address</label>
-          <input type="text" class="form-control" id="" placeholder="" name="guarantor_address">
+          <label >Guarantor Address</label>
+          <input type="text" class="form-control" id="" placeholder="Address" name="guarantor_address">
       </div>
       <div class="form-group ">
       <label >Date</label>
@@ -189,20 +200,20 @@
         </div>
         <div class="form-group">
           <label >Investigated By</label>
-          <input type="text" class="form-control" id="investigator_name" placeholder="" name="investigator_name">
+          <input type="text" class="form-control" id="investigator_name" placeholder="Investigator Name" name="investigator_name">
       </div>
         <h3>Recommendation</h3>
       <hr/>
       <div class="form-group">
           <label for="">Name</label>
-          <input type="text" class="form-control" id="" placeholder="" name="recommender_name" >
+          <input type="text" class="form-control" id="" placeholder="Recommender Name" name="recommender_name" >
       </div>
       <div class="form-group">
           <label>Position</label>
-          <input type="text" class="form-control" id="" placeholder="" name="recommender_position">
+          <input type="text" class="form-control" id="" placeholder="Position" name="recommender_position">
       </div>    
       <div class="form-group">
-          <label for="">Recommendation</label>
+          <label >Recommendation</label>
           <select class="select form-control" id="select" name="recommendation">
          
                 <option value="Approve">
@@ -225,3 +236,5 @@
     </form>
 
 
+</div>
+</div>

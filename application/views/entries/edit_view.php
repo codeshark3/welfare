@@ -1,8 +1,13 @@
-     
+     <!-- 
      <div class="d-flex justify-content-between flex-wrap flex-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">UPDATE ENTRY: <?php echo $entry['folder_no']; ?></h1>
- </div>
-
+            <h1 class="h2">UPDATE ENTRY: </h1>
+ </div> -->
+<div class="card ">
+ 
+      <div class="view overlay gradient-card-header blue-gradient">
+           <h1 class="card-header-title text-center" style="color: #fff"><b>UPDATE ENTRY: <?php echo $entry['folder_no']; ?></b></h1>
+           </div>
+           <div class="card-body card-body-cascade">
 <?php echo validation_errors(); ?>
 <?php echo form_open('entries/update'); ?>
 <div class="mx-auto col-10 "> 
@@ -23,25 +28,25 @@
 <div class="row">
       <div class="form-group  col-4" >
           <label for="SerialNo.">Serial Number</label>
-          <input type="text" class="form-control" id="Serial No." value="<?php echo $entry['serial_no']; ?>"">
+          <input type="text" class="form-control" id="Serial No." value="<?php echo $entry['serial_no']; ?>" name="serial_no">
       </div>
       <div class="form-group col-4">
           <label >Department</label>
-          <input type="text" class="form-control" id=""  value="<?php echo $entry['department']; ?>">
+          <input type="text" class="form-control" id="" name="department"  value="<?php echo $entry['department']; ?>">
       </div>
       <div class="form-group col-4">
           <label >Ward</label>
-          <input type="text" class="form-control"  id="" value="<?php echo $entry['ward']; ?>">
+          <input type="text" class="form-control"  id="" name="ward" value="<?php echo $entry['ward']; ?>">
       </div>
 </div>
         <div class="row">
         <div class="form-group col-6">
           <label >First Name</label>
-          <input type="text" class="form-control"   id="" value="<?php echo $entry['first_name']; ?>">
+          <input type="text" class="form-control"   id="" name="first_name" value="<?php echo $entry['first_name']; ?>">
       </div>
       <div class="form-group col-6">
           <label >Last Name</label>
-          <input type="text" class="form-control"  id="" value="<?php echo $entry['last_name']; ?>">
+          <input type="text" class="form-control"  id="" name="last_name" value="<?php echo $entry['last_name']; ?>">
       </div>
       </div>
       <div class="row">
@@ -89,7 +94,7 @@
           <div class="input-group-prepend">
           
             <span class="input-group-text">GHS</span>
-            <input type="text" class="form-control" value="<?php echo $entry['amount_paid']; ?>" id="" placeholder="">
+            <input type="text" class="form-control" value="<?php echo $entry['amount_paid']; ?>" id="" name="amount_paid" placeholder="">
             </div>
         </div>  
          
@@ -97,15 +102,15 @@
     <div class="row">
     <div class="form-group col-4">
           <label >Non Drug Bill</label>
-          <input type="text" class="form-control"  value="<?php echo $entry['non_drug_bill']; ?>" id="" placeholder="">
+          <input type="text" class="form-control"  value="<?php echo $entry['non_drug_bill']; ?>" id="" name="non_drug_bill" placeholder="">
       </div>
       <div class="form-group col-4">
           <label >Drug Bill</label>
-          <input type="text" class="form-control"   value="<?php echo $entry['drug_bill']; ?>" id="" placeholder="">
+          <input type="text" class="form-control"   value="<?php echo $entry['drug_bill']; ?>" id="" name="drug_bill" placeholder="">
       </div>
       <div class="form-group col-4">
           <label > Total</label>
-          <input type="text" class="form-control"  value="<?php echo $entry['total']; ?>" id="" placeholder="">
+          <input type="text" class="form-control"  value="<?php echo $entry['total']; ?>" id="" name="total" placeholder="">
       </div>
 </div>
 <div class="form-group">
@@ -116,7 +121,7 @@
       <div class="row">
       <div class="form-group col-4">
           <label >Balance</label>
-          <input type="text" class="form-control" id=""  placeholder="" value="<?php echo $entry['balance']; ?>" name="balance">
+          <input type="text" class="form-control" id=""   placeholder="" value="<?php echo $entry['balance']; ?>" name="balance">
       </div><div class="form-group col-4">
           <label >Due Date</label>
            <div class="start_date input-group mb-4">
@@ -141,7 +146,7 @@
       <div class="row">
       <div class="form-group col-6">
           <label >Name Of Declarant</label>
-          <input type="text" class="form-control" id="" value="<?php echo $entry['declarant_name']; ?>"  placeholder="" name="declarant_name">
+          <input type="text" class="form-control" id=""  value="<?php echo $entry['declarant_name']; ?>"  placeholder="" name="declarant_name">
       </div>
       <div class="form-group col-6">
           <label >Occupation</label>
@@ -150,7 +155,7 @@
 </div>
       <div class="form-group">
           <label >Declarant Address</label>
-          <input type="text" class="form-control"  value="<?php echo $entry['declarant_address']; ?>" id="" placeholder="" name="declarant_address">
+          <input type="text" class="form-control"  value="<?php echo $entry['declarant_address']; ?>" id="" n placeholder="" name="declarant_address">
       </div>
       <div class="form-group ">
       <label >Date</label>
@@ -176,7 +181,7 @@
 </div>
       <div class="form-group">
           <label >Guarantor Address</label>
-          <input type="text" class="form-control" id="" placeholder="" value="<?php echo $entry['guarantor_address']; ?>" name="guarantor_address">
+          <input type="text" class="form-control" id=""  placeholder="" value="<?php echo $entry['guarantor_address']; ?>" name="guarantor_address">
       </div>
       <div class="form-group ">
       <label >Date</label>
@@ -195,7 +200,7 @@
       <hr/>
       <div class="form-group">
           <label >Name</label>
-          <input type="text" class="form-control"  value="<?php echo $entry['recommender_name']; ?>" id="" placeholder="" name="recommender_name" >
+          <input type="text" class="form-control"  value="<?php echo $entry['recommender_name']; ?>" id=""  placeholder="" name="recommender_name" >
       </div>
       <div class="form-group">
           <label >Position</label>
@@ -214,3 +219,7 @@
 </div>
 </div>
 </form>
+
+
+</div>
+</div>
